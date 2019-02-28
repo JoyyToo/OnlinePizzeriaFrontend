@@ -1,0 +1,3 @@
+export const GET_CATEGORIES = "GET_CATEGORIES";
+export const DATA_LOADED = "DATA_LOADED";
+export const ADD_CATEGORY = "ADD_CATEGORY";
