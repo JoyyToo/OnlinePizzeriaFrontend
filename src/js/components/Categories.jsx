@@ -8,17 +8,14 @@ export class Category extends Component {
   }
   render() {
     return (
-      <ul className="list-group list-group-flush">
+      <ul className="list-group">
         {this.props.categories.map(el => (
-         <li className="list-group-item" key={el.id}>
-            {el.name}
-         </li>
+          <li className="list-group-item" key={el.id}>{el.name}</li>
         ))}
       </ul>
     );
   }
 }
-
 
 function mapStateToProps(state) {
   return {
