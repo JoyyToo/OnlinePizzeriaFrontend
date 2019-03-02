@@ -6,7 +6,9 @@ export class Category extends Component {
   componentDidMount() {
     this.props.getCategories();
   }
+
   render() {
+    console.log(this.props.categories)
     return (
       <ul className="list-group">
         {this.props.categories.map(el => (
@@ -19,7 +21,7 @@ export class Category extends Component {
 
 function mapStateToProps(state) {
   return {
-    categories: state.remoteCategories
+    categories: state.categories
   };
 }
 
