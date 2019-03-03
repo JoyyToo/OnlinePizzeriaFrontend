@@ -1,4 +1,4 @@
 export default {
   categories: [],
-  newUser: []
+  user: []
 }

@@ -6,18 +6,12 @@ import { composeValidators } from "../validators/utils";
 import { required } from "../validators";
 import FormGenerator from "../common/FormGenerator"
 
-const signupMetaData = [
+const loginMetaData = [
   {
     name: 'email',
     validate: composeValidators(required),
     label: 'Email',
     type: 'email',
-  },
-  {
-    name: 'username',
-    validate: composeValidators(required),
-    label: 'Username',
-    type: 'text',
   },
   {
     name: 'password',
@@ -27,7 +21,8 @@ const signupMetaData = [
   },
 ];
 
-class AuthPage extends React.Component {
+class Login extends React.Component {
+
   constructor(props, context) {
     super(props, context);
 
@@ -35,18 +30,18 @@ class AuthPage extends React.Component {
   }
 
   onSubmit(data) {
-    this.props.register(data);
+    this.props.login(data);
   }
 
   render() {
     return (
       <div>
         <FormGenerator
-          formInputMetadata={signupMetaData}
-          formTitle='Register Here'
-          primaryButton='Sign Up'
-          secondaryButton='Sign In'
-          secondaryLink='/login'
+          formInputMetadata={loginMetaData}
+          formTitle='Login Here'
+          primaryButton='Sign In'
+          secondaryButton='Sign Up'
+          secondaryLink='/signup'
           onClickSubmit={this.onSubmit}
         />
       </div>
@@ -55,15 +50,15 @@ class AuthPage extends React.Component {
 }
 
 function mapStateToProps(state) {
-    return {
-      auth: state.auth
-    };
+  return {
+    auth: state.auth
+  };
 }
 
 function mapDispatchToProps(dispatch) {
-    return {
-      register: bindActionCreators((data) => authActions.register(data), dispatch)
-    };
-  }
+  return {
+    login: bindActionCreators((data) => authActions.login(data), dispatch)
+  };
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(AuthPage);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

@@ -12,6 +12,8 @@ const Header = () => {
             <NavLink to="/categories" activeClassName="active">Categories</NavLink>
             {" | "}
             <NavLink to="/signup" activeClassName="active">Sign Up</NavLink>
+            {" | "}
+            <NavLink to="/login" activeClassName="active">Sign In</NavLink>
           </div>
     </nav>
   );
