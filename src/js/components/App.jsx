@@ -1,10 +1,11 @@
 import React from "react";
-import Categories from "./Categories.jsx"
+import Header from "./common/header"
+import Routes from "../../../src/routes";
 
 const App = () => (
-  <div className="row mt-5">
-    <h2>Pizza categories</h2>
-      <Categories />
+  <div className="container-fluid">
+    <Header />
+    <Routes />
   </div>
 );
 
