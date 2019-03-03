@@ -1,12 +1,17 @@
 import React from "react";
-import { BrowserRouter, Route } from "react-router-dom"
-import App from "./js/components/App";
+import { Route } from "react-router-dom"
 import HomePage from "./js/components/home/HomePage";
 import AboutPage from "./js/components/about/AboutPage";
+import Categories from "./js/components/categories/Categories";
+import Register from "./js/components/Auth/Register";
 
-export default (
-  <BrowserRouter>
+const Routes = () => (
+  <div>
     <Route exact path='/' component={HomePage} />
+    <Route path='/categories' component={Categories} />
     <Route path='/about' component={AboutPage} />
-  </BrowserRouter>
+    <Route path='/signup' component={Register} /> 
+  </div>
 );
+
+export default Routes;

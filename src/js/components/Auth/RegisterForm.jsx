@@ -2,7 +2,7 @@ import React from "react";
 import TextInput from "../common/TextInput";
 
 const RegisterForm = ({
-                      auth,
+                      state,
                       onSave,
                       onChange,
                       loading,
@@ -12,25 +12,25 @@ const RegisterForm = ({
     <form>
       <h1>Register Here </h1>
       <TextInput
-        name="username"
-        label="Username"
-        value={auth.username}
-        onChange={onChange}
-        error={errors.username}
-      />
-
-      <TextInput
         name="email"
         label="Email"
-        value={auth.email}
+        value={state.email}
         onChange={onChange}
         error={errors.email}
       />
 
       <TextInput
+        name="username"
+        label="Username"
+        onChange={onChange}
+        value={state.username}
+        error={errors.username}
+      />
+
+      <TextInput
         name="password"
         label="Password"
-        value={auth.password}
+        value={state.password}
         onChange={onChange}
         error={errors.password}
       />

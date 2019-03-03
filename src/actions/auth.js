@@ -1,11 +1,26 @@
 import { REGISTER } from "../constants/auth";
 
-export function register() {
+export function createUserSuccess(auth) {
+  return {type: REGISTER, auth};
+}
+
+export function register(data) {
   return function(dispatch) {
-    return fetch("https://thawing-oasis-83740.herokuapp.com/user")
-    .then(response => response.json())
-    .then(json => { 
-      dispatch({ type: REGISTER, payload: json });
-    });
-  }
+    return fetch("http://localhost:3000/user", 
+    {
+      method: 'POST', 
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    .then((response) => {
+      response.json()
+    }).then(auth => { 
+      dispatch(createUserSuccess(auth));
+    }).catch(error => {
+      throw(error);
+  });
+}
 }

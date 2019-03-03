@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getCategories } from "../../actions/category";
+import { getCategories } from "../../../actions/category";
 
 export class Category extends Component {
   componentDidMount() {
@@ -8,13 +8,15 @@ export class Category extends Component {
   }
 
   render() {
-    console.log(this.props.categories)
     return (
-      <ul className="list-group">
-        {this.props.categories.map(el => (
-          <li className="list-group-item" key={el.id}>{el.name}</li>
-        ))}
-      </ul>
+      <div>
+        <h2>Pizza categories</h2>
+        <ul className="list-group">
+          {this.props.categories.map(el => (
+            <li className="list-group-item" key={el.id}>{el.name}</li>
+          ))}
+        </ul>
+      </div>
     );
   }
 }

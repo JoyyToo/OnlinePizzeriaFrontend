@@ -1,14 +1,18 @@
 import React from "react";
-import { NavLink, HashRouter} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
     <nav>
-        <HashRouter>
-          <NavLink to="/" activeClassName="active">Home
-          {" | "}
-          <NavLink to="about" activeClassName="active">About</NavLink></NavLink>
-        </HashRouter>
+          <div>
+            <NavLink to="/" activeClassName="active">Home</NavLink>
+            {" | "}
+            <NavLink to="/about" activeClassName="active">About</NavLink>
+            {" | "}
+            <NavLink to="/categories" activeClassName="active">Categories</NavLink>
+            {" | "}
+            <NavLink to="/register" activeClassName="active">Sign Up</NavLink>
+          </div>
     </nav>
   );
 };

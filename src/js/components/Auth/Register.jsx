@@ -12,13 +12,34 @@ class AuthPage extends React.Component {
         auth: Object.assign({}, this.props.auth),
         errors: {}
     };
+
+    this.updateAuthState = this.updateAuthState.bind(this);
+    this.register = this.register.bind(this);
+  }
+
+  register(e) {
+    const data = {
+        email: this.state.email,
+        username: this.state.username,
+        password: this.state.password,
+    }
+    e.preventDefault();
+    this.props.register(data);
+  }
+
+  updateAuthState(event) {
+    const value = event.target.value;
+    const name = event.target.name;
+    this.setState({[name]: value})
   }
 
   render() {
     return (
       <div>
         <RegisterForm
-        auth={this.state.auth}
+        onChange={this.updateAuthState}
+        onSave={this.register}
+        state={this.state}
         errors={this.state.errors}
         />
       </div>
@@ -27,15 +48,14 @@ class AuthPage extends React.Component {
 }
 
 function mapStateToProps(state, ownProps) {
-    let auth = {email: '', username: '', password: ''};
     return {
-        auth: auth
+        auth: state.auth
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-      actions: bindActionCreators(authActions, dispatch)
+      register: bindActionCreators((data) => authActions.register(data), dispatch)
     };
   }
 

@@ -6,7 +6,7 @@ export function loadCategoriesSuccess(categories) {
 
 export function getCategories() {
   return function(dispatch) {
-    return fetch("https://thawing-oasis-83740.herokuapp.com/categories")
+    return fetch("http://localhost:3000/categories")
     .then(response => response.json())
     .then(categories => {
         

@@ -1,15 +1,13 @@
 import { REGISTER } from "../constants/auth"
+import initialState from "./initialState"
 
-const initialState = {
-    newUser: [],
-}
-
-export default function authReducer(state = initialState, action) {
+export default function authReducer(state = initialState.newUser, action) {
     switch(action.type) {
       case REGISTER:
-        return Object.assign({}, state, {
-            newUser: state.newUser.concat(action.payload)
-        });
+        return [
+        ...state,
+        Object.assign({}, action.auth)
+      ];
   
       default:
         return state;
