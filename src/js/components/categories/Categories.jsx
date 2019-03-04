@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getCategories } from "../../../actions/category";
+import toastr from "toastr"
 
 export class Category extends Component {
   componentDidMount() {
     this.props.getCategories();
+    toastr.success('Categories displayed successfully')
   }
 
   render() {

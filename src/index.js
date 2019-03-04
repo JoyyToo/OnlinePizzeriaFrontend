@@ -6,6 +6,10 @@ import {BrowserRouter } from "react-router-dom"
 import App from "./js/components/App"
 import "./styles/styles.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "../node_modules/toastr/build/toastr.min.css"
+import toastr from "toastr"
+
+toastr.options.timeOut = 2000;
 
 render(
   <Provider store={store}>

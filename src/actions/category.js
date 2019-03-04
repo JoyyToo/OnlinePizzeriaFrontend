@@ -1,4 +1,6 @@
 import { CATEGORIES_LOADED } from "../constants/category";
+import { BASE_URL } from "../constants/index";
+import axios from 'axios';
 
 export function loadCategoriesSuccess(categories) {
   return {type: CATEGORIES_LOADED, categories};
@@ -6,11 +8,10 @@ export function loadCategoriesSuccess(categories) {
 
 export function getCategories() {
   return function(dispatch) {
-    return fetch("http://localhost:3000/categories")
-    .then(response => response.json())
-    .then(categories => {
-        
-      dispatch(loadCategoriesSuccess(categories));
-    });
+    return axios.get(`${BASE_URL}/categories`)
+      .then(response => {
+        dispatch(loadCategoriesSuccess(response.data));
+        return response;
+      });
   }
 }
