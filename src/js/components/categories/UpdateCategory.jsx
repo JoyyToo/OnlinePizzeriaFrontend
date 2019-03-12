@@ -1,28 +1,21 @@
 import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators} from "redux";
-import * as authActions from "../../../actions/auth";
+import * as categoryActions from "../../../actions/category";
 import { composeValidators } from "../validators/utils";
 import { required } from "../validators";
 import FormGenerator from "../common/FormGenerator"
 
-const loginMetaData = [
+const categoryMetaData = [
   {
-    name: 'email',
+    name: 'name',
     validate: composeValidators(required),
-    label: 'Email',
-    type: 'email',
-  },
-  {
-    name: 'password',
-    validate: composeValidators(required),
-    label: 'Password',
-    type: 'password',
-  },
+    label: 'Category name',
+    type: 'text',
+  }
 ];
 
-class Login extends React.Component {
-
+class UpdateCategory extends React.Component {
   constructor(props, context) {
     super(props, context);
 
@@ -30,7 +23,7 @@ class Login extends React.Component {
   }
 
   onSubmit(data) {
-    this.props.login(data);
+    this.props.update_category(data, this.props.match.params['id'] );
     this.props
       .history
       .push('/categories')
@@ -40,11 +33,11 @@ class Login extends React.Component {
     return (
       <div>
         <FormGenerator
-          formInputMetadata={loginMetaData}
-          formTitle='Login Here'
-          primaryButton='Sign In'
-          secondaryButton='Sign Up'
-          secondaryLink='/signup'
+          formInputMetadata={categoryMetaData}
+          formTitle='Update Category'
+          primaryButton='Submit'
+          secondaryButton='Cancel'
+          secondaryLink='/categories'
           onClickSubmit={this.onSubmit}
         />
       </div>
@@ -54,14 +47,14 @@ class Login extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    auth: state.auth
+    category: state.categories
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    login: bindActionCreators((data) => authActions.login(data), dispatch)
+    update_category: bindActionCreators((data, id) => categoryActions.updateCategory(data, id), dispatch)
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(UpdateCategory);

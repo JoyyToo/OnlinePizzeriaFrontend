@@ -1,7 +1,5 @@
-import { REGISTER } from "../constants/auth";
-import { LOGIN } from "../constants/auth";
-import { BASE_URL } from "../constants/index";
-import axios from 'axios';
+import { REGISTER, LOGIN } from "../constants/auth";
+import axiosInstance from "../constants/AxiosCall"
 import toastr from 'toastr'
 
 export function createUserSuccess(auth) {
@@ -14,8 +12,8 @@ export function loginUserSuccess(auth) {
 
 export function register(data) {
   return function(dispatch) {
-    axios.post(
-      `${BASE_URL}/user`, data)
+    axiosInstance.post(
+      `user`, data)
       .then(response => {
         dispatch(createUserSuccess(response.data));
         toastr.success('User created successfully');
@@ -30,10 +28,11 @@ export function register(data) {
 
 export function login(data) {
   return function(dispatch) {
-    axios.post(
-      `${BASE_URL}/user/sign_in`, data)
+    axiosInstance.post(
+      `user/sign_in`, data)
       .then(response => {
         dispatch(loginUserSuccess(response.data));
+        localStorage.setItem('token', response.data.token);
         toastr.success('User logged in successfully');
         return response;
       }).catch((error) => {

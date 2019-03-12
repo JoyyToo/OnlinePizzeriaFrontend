@@ -1,4 +1,5 @@
 export default {
   categories: [],
-  user: []
+  user: [],
+  pizzas: []
 }
