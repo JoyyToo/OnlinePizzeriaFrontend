@@ -21,7 +21,6 @@ const pizzaMetaData = [
   },
   {
     name: 'ingredients[0]',
-    validate: composeValidators(required),
     label: 'Ingredients',
     type: 'array',
   },

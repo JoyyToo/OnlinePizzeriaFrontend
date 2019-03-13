@@ -27,7 +27,6 @@ const pizzaMetaData = [
   },
   {
     name: 'image.url',
-    validate: composeValidators(required),
     label: 'Image',
     type: 'file',
   }
